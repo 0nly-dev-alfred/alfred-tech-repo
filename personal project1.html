@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Course Registration | Alfred Tech</title>
+
+    
+    <style>
+        /* 1. General Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            padding-top: 100px; /* Offset for the fixed navbar */
+        }
+
+        /* 2. Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #334155;
+        }
+
+        .nav-logo a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: #ff00ff;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff00ff;
+        }
+
+        /* 3. Layout Container */
+        .container {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ff00ff, #00d2ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            margin-bottom: 30px;
+            color: #94a3b8;
+        }
+
+        /* 4. Registration Box & Form */
+        .registration-box {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            text-align: left;
+            transition: opacity 0.3s ease;
+        }
+
+        .registration-box h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: white;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #ff00ff;
+        }
+
+        /* 5. Buttons & Animations */
+        @keyframes colorCycle {
+            0% { background-color: #ff00ff; box-shadow: 0 0 5px #ff00ff; }
+            50% { background-color: #7000ff; box-shadow: 0 0 20px #7000ff; }
+            100% { background-color: #ff00ff; box-shadow: 0 0 5px #ff00ff; }
+        }
+
+        .btn-submit, .nav-cta {
+            background: #ff00ff;
+            color: white !important;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s;
+            animation: colorCycle 3s infinite ease-in-out;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .nav-cta {
+            padding: 8px 20px;
+            border-radius: 5px;
+        }
+
+        .btn-submit:hover, .nav-cta:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* 6. Success Message State */
+        .success-message {
+            text-align: center;
+            padding: 10px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+
+        .input-group input:focus {
+    border-color: #ff00ff;
+    box-shadow: 0 0 8px rgba(255, 0, 255, 0.2);
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 15px 5%;
+    }
+    .nav-links {
+        gap: 15px;
+    }
+    header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+            <a href="#">ALFRED TECH<span>ACADEMY</span></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#" class="nav-cta">Register</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Level Up Your Tech Skills</h1>
+            <p>Join our comprehensive technical and leadership boot camps.</p>
+        </header>
+
+        <section class="registration-box">
+            <h2>Course Registration</h2>
+            <form id="regForm">
+                <div class="input-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" placeholder="John Doe" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="email@example.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="course">Select Track</label>
+                    <select id="course">
+                        <option value="frontend">Front-End Development</option>
+                        <option value="backend">Back-End Systems</option>
+                        <option value="design">UI/UX Design</option>
+                        <option value="management">Project Management</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Secure My Spot</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('regForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Extract values
+            const userName = document.getElementById('full-name').value;
+            const courseDropdown = document.getElementById('course');
+            const courseTrack = courseDropdown.options[courseDropdown.selectedIndex].text;
+
+            const registrationBox = document.querySelector('.registration-box');
+
+            // Visual transition
+            registrationBox.style.opacity = '0';
+            
+            setTimeout(() => {
+                registrationBox.innerHTML = `
+                    <div class="success-message">
+                        <div class="success-icon">✓</div>
+                        <h2 style="color: #ff00ff; margin-bottom: 10px;">Registration Complete!</h2>
+                        <p style="color: #cbd5e1; line-height: 1.6;">
+                            Welcome to the tribe, <strong>${userName}</strong>.
+                        </p>
+                        <p style="color: #cbd5e1; line-height: 1.6;">
+                            Orientation details for the <strong>${courseTrack}</strong> track are on their way to your inbox.
+                        </p>
+                        <button onclick="window.location.reload()" class="btn-submit" style="margin-top: 25px;">Done</button>
+                    </div>
+                `;
+                registrationBox.style.opacity = '1';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
